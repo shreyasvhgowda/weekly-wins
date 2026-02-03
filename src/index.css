@@ -2,87 +2,158 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Weekly To-Do Design System */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base colors */
+    --background: 40 20% 98%;
+    --foreground: 240 10% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 240 10% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 240 10% 10%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 240 5% 15%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 40 15% 94%;
+    --secondary-foreground: 240 10% 20%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 40 10% 92%;
+    --muted-foreground: 240 5% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 40 30% 90%;
+    --accent-foreground: 240 10% 15%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 40 15% 88%;
+    --input: 40 15% 88%;
+    --ring: 240 5% 25%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
+
+    /* Day-specific accent colors */
+    --monday-bg: 0 0% 98%;
+    --monday-accent: 0 0% 20%;
+    --monday-muted: 0 0% 90%;
+
+    --tuesday-bg: 45 100% 97%;
+    --tuesday-accent: 160 84% 39%;
+    --tuesday-priority-high: 0 84% 60%;
+    --tuesday-priority-medium: 45 93% 47%;
+    --tuesday-priority-low: 142 76% 36%;
+
+    --wednesday-bg: 215 100% 97%;
+    --wednesday-accent: 215 90% 55%;
+    --wednesday-drag: 215 90% 90%;
+
+    --thursday-bg: 35 100% 97%;
+    --thursday-accent: 25 95% 53%;
+    --thursday-time: 25 80% 45%;
+
+    --friday-bg: 280 100% 97%;
+    --friday-accent: 280 80% 55%;
+    --friday-gold: 45 100% 50%;
+    --friday-gradient-start: 280 80% 55%;
+    --friday-gradient-end: 320 80% 55%;
+
+    --saturday-bg: 142 100% 97%;
+    --saturday-accent: 142 76% 36%;
+    --saturday-streak: 142 70% 45%;
+
+    --sunday-bg: 250 100% 98%;
+    --sunday-accent: 250 70% 55%;
+    --sunday-reflection: 280 50% 60%;
+
+    /* Animation durations */
+    --transition-fast: 150ms;
+    --transition-normal: 250ms;
+    --transition-slow: 400ms;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    
+    /* Day card shadows with color */
+    --shadow-monday: 0 8px 30px -12px hsl(0 0% 0% / 0.15);
+    --shadow-tuesday: 0 8px 30px -12px hsl(160 84% 39% / 0.25);
+    --shadow-wednesday: 0 8px 30px -12px hsl(215 90% 55% / 0.25);
+    --shadow-thursday: 0 8px 30px -12px hsl(25 95% 53% / 0.25);
+    --shadow-friday: 0 8px 30px -12px hsl(280 80% 55% / 0.25);
+    --shadow-saturday: 0 8px 30px -12px hsl(142 76% 36% / 0.25);
+    --shadow-sunday: 0 8px 30px -12px hsl(250 70% 55% / 0.25);
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 240 10% 8%;
+    --foreground: 40 20% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 240 10% 12%;
+    --card-foreground: 40 20% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 240 10% 12%;
+    --popover-foreground: 40 20% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 40 20% 95%;
+    --primary-foreground: 240 10% 8%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 240 8% 18%;
+    --secondary-foreground: 40 20% 90%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 240 8% 20%;
+    --muted-foreground: 40 10% 60%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 240 8% 22%;
+    --accent-foreground: 40 20% 95%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 240 8% 22%;
+    --input: 240 8% 22%;
+    --ring: 40 20% 80%;
+
+    /* Dark mode day colors */
+    --monday-bg: 0 0% 10%;
+    --monday-accent: 0 0% 85%;
+    --monday-muted: 0 0% 20%;
+
+    --tuesday-bg: 160 30% 8%;
+    --tuesday-accent: 160 70% 50%;
+
+    --wednesday-bg: 215 30% 8%;
+    --wednesday-accent: 215 80% 60%;
+    --wednesday-drag: 215 40% 20%;
+
+    --thursday-bg: 25 30% 8%;
+    --thursday-accent: 25 85% 55%;
+
+    --friday-bg: 280 30% 8%;
+    --friday-accent: 280 70% 60%;
+    --friday-gold: 45 90% 55%;
+
+    --saturday-bg: 142 30% 8%;
+    --saturday-accent: 142 65% 45%;
+
+    --sunday-bg: 250 30% 8%;
+    --sunday-accent: 250 60% 60%;
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -100,6 +171,252 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+/* Custom scrollbar */
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--muted)) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--muted));
+    border-radius: 3px;
+  }
+}
+
+/* Day-specific backgrounds */
+.day-monday {
+  background: hsl(var(--monday-bg));
+}
+
+.day-tuesday {
+  background: hsl(var(--tuesday-bg));
+}
+
+.day-wednesday {
+  background: hsl(var(--wednesday-bg));
+}
+
+.day-thursday {
+  background: hsl(var(--thursday-bg));
+}
+
+.day-friday {
+  background: linear-gradient(135deg, hsl(var(--friday-bg)) 0%, hsl(280 100% 95%) 100%);
+}
+
+.day-saturday {
+  background: hsl(var(--saturday-bg));
+}
+
+.day-sunday {
+  background: linear-gradient(135deg, hsl(var(--sunday-bg)) 0%, hsl(280 100% 96%) 100%);
+}
+
+/* Priority tag colors */
+.priority-high {
+  background: hsl(var(--tuesday-priority-high));
+  color: white;
+}
+
+.priority-medium {
+  background: hsl(var(--tuesday-priority-medium));
+  color: hsl(240 10% 10%);
+}
+
+.priority-low {
+  background: hsl(var(--tuesday-priority-low));
+  color: white;
+}
+
+/* Drag and drop styles */
+.dragging {
+  opacity: 0.5;
+  transform: scale(1.02);
+  box-shadow: var(--shadow-xl);
+}
+
+.drag-over {
+  background: hsl(var(--wednesday-drag));
+  border: 2px dashed hsl(var(--wednesday-accent));
+}
+
+/* Task animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes checkmark {
+  0% {
+    stroke-dashoffset: 24;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes confetti {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes streak {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-slide-in {
+  animation: slideIn var(--transition-normal) ease-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn var(--transition-normal) ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn var(--transition-normal) ease-out;
+}
+
+.animate-pulse-soft {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Task completion animation */
+.task-complete {
+  text-decoration: line-through;
+  opacity: 0.6;
+  transition: all var(--transition-normal) ease;
+}
+
+/* Progress bar animations */
+.progress-bar {
+  transition: width var(--transition-slow) ease-out;
+}
+
+/* Friday gamification */
+.points-badge {
+  background: linear-gradient(135deg, hsl(var(--friday-gold)) 0%, hsl(35 100% 45%) 100%);
+  color: hsl(240 10% 10%);
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px hsl(45 100% 50% / 0.3);
+}
+
+/* Saturday streak indicator */
+.streak-badge {
+  background: linear-gradient(90deg, hsl(var(--saturday-accent)), hsl(160 70% 45%));
+  background-size: 200% 200%;
+  animation: streak 3s ease infinite;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+/* Sunday reflection card */
+.reflection-card {
+  background: linear-gradient(135deg, hsl(var(--sunday-accent) / 0.1), hsl(var(--sunday-reflection) / 0.1));
+  border: 1px solid hsl(var(--sunday-accent) / 0.2);
+}
+
+/* Dark mode toggle */
+.dark-mode-toggle {
+  position: relative;
+  width: 56px;
+  height: 28px;
+  border-radius: 9999px;
+  background: hsl(var(--muted));
+  cursor: pointer;
+  transition: background var(--transition-normal) ease;
+}
+
+.dark-mode-toggle.active {
+  background: hsl(var(--primary));
+}
+
+.dark-mode-toggle::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  transition: transform var(--transition-normal) ease;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+}
+
+.dark-mode-toggle.active::after {
+  transform: translateX(28px);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 640px) {
+  .day-card {
+    padding: 1rem;
   }
 }
