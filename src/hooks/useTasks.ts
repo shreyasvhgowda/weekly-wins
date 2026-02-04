@@ -1,5 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useLocalStorage } from './useLocalStorage';
+
+// Clear localStorage on app startup (fresh start on server restart)
+const SESSION_KEY = 'weekly-todo-session-active';
+if (!sessionStorage.getItem(SESSION_KEY)) {
+  // New session - clear previous data
+  localStorage.removeItem('weekly-todo-tasks');
+  localStorage.removeItem('weekly-todo-points');
+  sessionStorage.setItem(SESSION_KEY, 'true');
+}
 
 export interface Task {
   id: string;
