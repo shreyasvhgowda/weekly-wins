@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { DayName } from '../types';
-import { useTasks } from '../hooks/useTasks';
+import { useDbTasks } from '../hooks/useDbTasks';
 import { useDarkMode } from '../hooks/useDarkMode';
+import { useAuth } from '../contexts/AuthContext';
 import { Header } from './Header';
 import { DaySelector } from './DaySelector';
 import { MondayView } from './days/MondayView';
@@ -11,10 +12,12 @@ import { ThursdayView } from './days/ThursdayView';
 import { FridayView } from './days/FridayView';
 import { SaturdayView } from './days/SaturdayView';
 import { SundayView } from './days/SundayView';
+import { Button } from './ui/button';
 
 export function WeeklyTodoApp() {
   const [selectedDay, setSelectedDay] = useState<DayName | null>(null);
   const [isDarkMode, toggleDarkMode] = useDarkMode();
+  const { user, signOut } = useAuth();
   const {
     tasks,
     addTask,
@@ -25,7 +28,8 @@ export function WeeklyTodoApp() {
     getCompletionPercentage,
     getWeeklySummary,
     totalPoints,
-  } = useTasks();
+    loading,
+  } = useDbTasks();
 
   const completionPercentages = {
     monday: getCompletionPercentage('monday'),
@@ -119,6 +123,14 @@ export function WeeklyTodoApp() {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="animate-pulse-soft text-muted-foreground">Loading tasks...</div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <Header
@@ -126,6 +138,8 @@ export function WeeklyTodoApp() {
         onBack={() => setSelectedDay(null)}
         isDarkMode={isDarkMode}
         onToggleDarkMode={toggleDarkMode}
+        userName={user?.user_metadata?.display_name || user?.email || ''}
+        onSignOut={signOut}
       />
 
       {selectedDay ? (
@@ -134,7 +148,6 @@ export function WeeklyTodoApp() {
         </main>
       ) : (
         <main className="container mx-auto py-8">
-          {/* Welcome section */}
           <div className="text-center mb-8 px-4">
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-3">
               Plan Your Week
@@ -144,14 +157,12 @@ export function WeeklyTodoApp() {
             </p>
           </div>
 
-          {/* Day selector grid */}
           <DaySelector
             selectedDay={selectedDay}
             onSelectDay={setSelectedDay}
             completionPercentages={completionPercentages}
           />
 
-          {/* Weekly summary */}
           <div className="mt-8 px-4 max-w-md mx-auto">
             <div className="p-6 bg-card rounded-2xl border border-border">
               <h3 className="font-semibold text-foreground mb-4 text-center">
